@@ -1,0 +1,237 @@
+.header {
+	text-align:center;
+}
+
+.form {
+	height: 500;
+	/*width:940;*/
+	text-align: center;
+}
+
+body {
+	padding-left: 20%;
+	padding-right: 20%;
+	padding-top:10%;
+	/*padding-bottom:10%;*/
+	background: #333333;
+	color:white;
+	font-family: 'Lato', sans-serif;
+}
+
+i {
+	display:inline-block;
+	/*background:red;
+	border-radius:5px;*/
+	padding:10px;
+}
+
+i:hover {
+	color:#af111c;
+}
+
+h1 {
+	/*font-family: 'Nosifer', cursive;*/
+	font-family: 'Permanent Marker', cursive;
+	/*font-family: 'Butcherman', cursive;*/
+	font-size:70px;
+}
+
+h2 {
+	font-size:40px;
+	font-family: 'Permanent Marker', cursive;
+}
+
+input {
+	/*border-radius:5px;*/
+	width:90px;
+	/*font-size:20px;*/
+	font: inherit;
+
+	border:none;
+	border-bottom:1px solid white;
+	/*background: rgba(175, 17, 28, .5);*/
+	background:none;
+	box-shadow:none;
+	/*box-shadow: 0px 0px 50px 10px rgba(100,0,0,.5);*/
+	color:white;
+	line-height: 1.5em;
+  	padding: 0.5em 0.5em 0.3em 1em;
+}	
+
+.button {
+	margin-top:20px;
+	padding:5px;
+	width:100px;
+	border:1px solid white;
+	border-radius: 5px;
+}
+
+select.minimal {
+ background-image:
+    linear-gradient(45deg, transparent 50%, white 50%),
+    linear-gradient(135deg, white 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    calc(100% - 2.5em) 0.5em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1px 1.5em;
+  background-repeat: no-repeat;
+  border-bottom:1px solid white;
+}
+
+
+select {
+
+  /* styling */
+  background-color: white;
+  /*border: thin solid blue;*/
+  /*border-radius: 4px;*/
+  display: inline-block;
+  font: inherit;
+  line-height: 1.5em;
+  padding: 0.5em 3.5em 0.5em 1em;
+
+  /* reset */
+
+  margin: 0;      
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background: #333333;
+  border:none;
+  color:white;
+  appearance:none;
+}
+
+select.minimal:focus {
+  background-image:
+    linear-gradient(45deg, white 50%, transparent 50%),
+    linear-gradient(135deg, transparent 50%, white 50%);
+  background-position:
+    calc(100% - 15px) 1em,
+    calc(100% - 20px) 1em,
+    calc(100% - 2.5em) 0.5em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1px 1.5em;
+  background-repeat: no-repeat;
+  border-color: white;
+  outline: 0;
+}
+
+option {
+	background:none;
+	box-shadow:none;
+}
+
+
+
+.circle {
+    background: #af111c;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 20%;
+    color:white;
+    text-align:center;
+    font-size:3em;
+    line-height:2em;
+}
+
+
+.block {
+	/*width:60%;*/
+	padding-left:80px;
+	padding-bottom:100px;
+	border-left: 5px solid #af111c;
+	list-style: none;
+}
+
+p {
+	margin:0px;
+	font-size:1.5em;
+}
+
+.footer {
+	postion:fixed;
+	bottom:0;
+}
+
+
+.heart-rate {
+  width: 150px;
+  height: 73px;
+  position: relative;
+  margin: 20px auto;
+}
+
+.fade-in {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(51, 51, 51, 1);
+  top: 0;
+  right: 0;
+  animation: heartRateIn 2.5s linear infinite;
+}
+
+.fade-out {
+  position: absolute;
+  width: 120%;
+  height: 100%;
+  top: 0;
+  left: -120%;
+  animation: heartRateOut 2.5s linear infinite;
+  background: rgba(51, 51, 51, 1);
+  background: linear-gradient(to right, rgba(51, 51, 51, 1) 0%, rgba(51, 51, 51, 1) 80%, rgba(51, 51, 51, 0) 100%);
+}
+
+@keyframes heartRateIn {
+  0% {
+    width: 100%;
+  }
+  50% {
+    width: 0;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes heartRateOut {
+  0% {
+    left: -120%;
+  }
+  30% {
+    left: -120%;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+
+.teardrop {
+  margin-top: 0px;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-top-left-radius: 50%;
+  -webkit-transform:rotate(-45deg);
+  z-index: -1;
+  background: #af111c;
+  position:absolute;
+  top:10;
+  margin-left:-12px;
+}
+
