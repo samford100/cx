@@ -1,29 +1,35 @@
 const webpack = require('webpack')
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
-	entry: __dirname + '/js/index.jsx',
+	entry: [
+		__dirname + '/js/index.js',
+		'babel-polyfill'
+	],
+	module: {
+	    loaders: [
+	      {
+	        test: /\.jsx?$/,
+	        exclude: /(node_modules|bower_components)/,
+	        loader: 'babel-loader',
+	        query: {
+	          presets: ['react', 'es2015', 'stage-0'],
+	          plugins: ['transform-class-properties'],
+	        }
+	      },
+	      { 
+	        test: /\.css$/, 
+	        loader: "style-loader!css-loader" 
+	      }, 
+	    ]
+	  },
 	output: {
 		path: __dirname + '/dist',
 		filename: 'bundle.js'
 	},
 	resolve: {
-		extensions: ['.js', '.jsx', '.css']
-	},
-	module: {
-		rules: [
-			{
-				test: /\.jsx?/,
-				exclude: /node_modules/,
-				use: 'babel-loader'
-			},
-			{
-				test: /\.css$/,  
-				exclude: /node_modules/,  
-				use: [ 'style-loader', 'css-loader' ]
-			}
-		]
+		extensions: ['.js', '.css']
 	}
 }
 

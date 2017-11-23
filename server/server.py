@@ -58,15 +58,17 @@ def test_death():
         model = joblib.load('./data/model')
         x_test = joblib.load('./data/x_test')
         y_test = joblib.load('./data/y_test')
-        print(x_test)
+        # print(x_test)
 
         prediction = model.predict(x_test)
+        print('prediction')
         treeScore = model.score(x_test, y_test)
         print('treeScore', treeScore)
         response = jsonify({'test': True})
         return response
 
-    except Exception:
+    except Exception as e:
+        print(e)
         response = jsonify({'test': False})
         return response
 
@@ -74,8 +76,15 @@ def test_death():
 
 def create_model(x_train, y_train):
     from sklearn import tree
-    model = tree.DecisionTreeClassifier()
-    model = model.fit(x_train,y_train)
+    # from sklearn.ensemble import GradientBoostingClassifier
+    # from sklearn import svm
+    # from sklearn.neural_network import MLPClassifier
+    model = svm.SVC().fit(x_train, y_train)
+    # from sklearn.neighbors.nearest_centroid import NearestCentroid
+    # model = NearestCentroid().fit()
+    # model = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(5, 2), random_state=1).fit(x_train,y_train)
+    model = tree.DecisionTreeClassifier().fit(x_train, y_train)
+    # model = GradientBoostingClassifier(n_estimators=100, learning_rate=1.0, max_depth=1, random_state=0).fit(x_train, y_train)
     return model
 
 def split_data(data, test_size=.1):
