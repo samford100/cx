@@ -17,14 +17,6 @@ def index():
     return render_template("index.html")
 
 # api routes
-
-@app.route("/api/test", methods=["GET"])
-def get_test():
-    print('inside /api/test')
-    response = jsonify({'death': 'cancer'})
-    # response.headers.add('Access-Control-Allow-Origin', '*')
-    return response
-
 @app.route("/api/train_death", methods=['GET'])
 def train_death():
     # check if model is already created
@@ -59,6 +51,9 @@ def test_death():
         x_test = joblib.load('./data/x_test')
         y_test = joblib.load('./data/y_test')
         # print(x_test)
+        print(list(x_test))
+        print('~~~~~')
+        print(list(y_test))
 
         prediction = model.predict(x_test)
         print('prediction')
@@ -79,7 +74,7 @@ def create_model(x_train, y_train):
     # from sklearn.ensemble import GradientBoostingClassifier
     # from sklearn import svm
     # from sklearn.neural_network import MLPClassifier
-    model = svm.SVC().fit(x_train, y_train)
+    # model = svm.SVC().fit(x_train, y_train)
     # from sklearn.neighbors.nearest_centroid import NearestCentroid
     # model = NearestCentroid().fit()
     # model = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(5, 2), random_state=1).fit(x_train,y_train)
@@ -128,6 +123,8 @@ def read_and_clean_data():
                     'day_of_week_of_death',
                     'injury_at_work', 'manner_of_death', 'activity_code',
                     'place_of_injury_for_causes_w00_y34_except_y06_and_y07_', 'race']
+
+
 
     #ONE HOT ENCODING
     data = pd.get_dummies(data, columns=one_hot)

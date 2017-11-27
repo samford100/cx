@@ -12,18 +12,6 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    // fetch("/api/test")
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log(data)
-    //     this.setState({
-    //       death: data.death
-    //     })
-    //   })
-    //   .catch(error => {
-    //     console.log(error)
-    //   })
-
     // fetch("/api/train_death")
     //   .then(response => response.json())
     //   .then(data => {
@@ -186,9 +174,9 @@ class Block extends Component {
           <span style={{fontSize: "12px"}}>years old</span>
         </div>
         <div className="icons">
-          <i className="fa fa-heartbeat fa-5x" style={{color: this.state.selected == 0 ? '#af111c' : 'white'}} onMouseEnter={() => this.onHover(0)}></i>
-          <i className="fa fa-car fa-5x" style={{color: this.state.selected == 1 ? '#af111c' : 'white'}} onMouseEnter={() => this.onHover(1)}></i>
-          <i className="fa fa-medkit fa-5x" style={{color: this.state.selected == 2 ? '#af111c' : 'white'}} onMouseEnter={() => this.onHover(2)}></i>
+          <i className={this.state.selected == 0 ? "fa fa-heartbeat fa-5x i-selected" : "fa fa-heartbeat fa-5x icon"} onMouseEnter={() => this.onHover(0)}></i>
+          <i className={this.state.selected == 1 ? "fa fa-car fa-5x i-selected" : "fa fa-car fa-5x icon"} onMouseEnter={() => this.onHover(1)}></i>
+          <i className={this.state.selected == 2 ? "fa fa-medkit fa-5x i-selected" : "fa fa-medkit fa-5x icon"} onMouseEnter={() => this.onHover(2)}></i>
         </div>
 
         {mappedWays[this.state.selected]}
