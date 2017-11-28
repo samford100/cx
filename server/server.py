@@ -71,17 +71,24 @@ def test_death():
 def get_death():
     print('get death')
     content = request.get_json()
+    print(content)
     # content = {
-    #   detail_age: "23", 
-    #   race: "18", 
-    #   sex: "M", 
-    #   education_2003_revision: "1", 
+    #   detail_age: "23",
+    #   race: "18",
+    #   sex: "M",
+    #   education_2003_revision: "1",
     #   marital_status: "S"
     # }
+    for key, value in content.items():
+        content[key] = [value, value, value]
+    content['detail_age'] = [content['detail_age'][0], 50, 75]
+    df = pd.DataFrame(data=content)
+    print(df)
     try:
         model = joblib.load('./data/model')
-        prediction = model.predict_proba(content)
-        
+        prediction = model.predict_proba(df)
+        print(prediction)
+
 
 
 
