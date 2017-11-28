@@ -28,7 +28,6 @@ export default class App extends Component {
     //   .catch(err => {
     //     console.log(err)
     //   })
-
   }
 
   submitQuery = (data) => {
@@ -224,34 +223,49 @@ class Form extends Component {
         <input type="number" defaultValue={23}></input>
         &nbsp; year old &nbsp;
         <select className="minimal">
-          <option value="white">White</option>
-          <option value="black">Black</option>
+          <option value="18">Asian Indian</option>
+          <option value="28">Korean</option>
+          <option value="38">Samoan</option>
+          <option value="48">Vietnamese</option>
+          <option value="58">Guamianian</option>
+          <option value="68">Other Asian / Pacific Islander</option>
+          <option value="01">White</option>
+          <option value="02">Black</option>
+          <option value="03">American Indian</option>
+          <option value="04">Chinese</option>
+          <option value="05">Japanese</option>
+          <option value="06">Hawaiian</option>
+          <option value="07">Filipino</option>
+          <option value="00">Other</option>
         </select>
         &nbsp;
         <select className="minimal">
-          <option value="man">Man</option>
-          <option value="woman">Woman</option>
+          <option value="M">Man</option>
+          <option value="W">Woman</option>
         </select>
-        &nbsp; from &nbsp;
+        &nbsp; with &nbsp;
         <select className="minimal">
-          <option value="man">Georgia</option>
-          <option value="woman">Illinois</option>
+          <option value="1">8th grade or less</option>
+          <option value="2">9 - 12th grade, no diploma</option>
+          <option value="3">high school graduate or GED completed</option>
+          <option value="4">some college credit, but no degree</option>
+          <option value="5">Associate degree</option>
+          <option value="6">Bachelor’s degree</option>
+          <option value="7">Master’s degree</option>
+          <option value="8">Doctorate or professional degree</option>
+          <option value="9">Unknown</option>
         </select>
-        &nbsp; with a &nbsp;
+        &nbsp; level of education, and I am &nbsp;
         <select className="minimal">
-          <option value="man">Bachelor's</option>
-          <option value="woman">Master's</option>
-        </select>
-        &nbsp; degree, and I am &nbsp;
-        <select className="minimal">
-          <option value="man">Single</option>
-          <option value="woman">Married</option>
-          <option value="woman">Divorced</option>
-          <option value="woman">Widowed</option>
+          <option value="S">Single</option>
+          <option value="M">Married</option>
+          <option value="W">Widowed</option>
+          <option value="D">Divorced</option>
+          <option value="U">Unknown</option>
         </select>
         .
         </p>
-        <input className="button" type="button" value="Submit" onClick={() => this.props.submitQuery("fakedata")}></input>
+        <input className="button" type="button" value="Kill Me" onClick={() => this.props.submitQuery("fakedata")}></input>
       </div>
     )
   }
@@ -282,7 +296,8 @@ const Header = () =>
 
 const Footer = () => 
   <div className="footer">
-    <p><span>Created for CX6242 at Georgia Tech by Sam Ford, John Giordono, Joe Mosby, Aaron Parry, and Rodolfo Soborio | </span><span><a href="https://www.github.com/samford100/cx">View the source on github</a></span></p>
+    <p><span>Created for CX6242 at Georgia Tech by Sam Ford, John Giordano, Joe Mosby, Aaron Parry, and Rodolfo Saborio</span></p>
+    <p><span><a href="https://www.github.com/samford100/cx">View the source on github</a></span></p>
     
   </div>
 

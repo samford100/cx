@@ -3,7 +3,8 @@
 }
 
 .form {
-	height: 300;
+	/*height: 350;*/
+  min-height: 325;
 	/*width:940;*/
 	text-align: center;
 }
@@ -34,6 +35,10 @@ i {
 icon:hover {
   /*font-size:90px;*/
   text-shadow: 2px 2px black;
+}
+
+a {
+  color: white;
 }
 
 i:hover {

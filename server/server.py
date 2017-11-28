@@ -95,6 +95,11 @@ def read_and_clean_data():
 
     print('read data from csv') # this is quick
 
+
+    #CONSOLIDATE RACE COLUMN
+    data['race'] = data['race'].replace(8,68)
+    data['race'] = data['race'].replace(78,68)
+
     #SET GENDER TO BINARY
     data['sex'] = data['sex'].map({'F':0, 'M': 1}).astype(int)
 
