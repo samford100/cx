@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 
 import pandas as pd
 import numpy as np
@@ -67,8 +67,38 @@ def test_death():
         response = jsonify({'test': False})
         return response
 
-#helpers
+@app.route("/api/get_death", methods=['POST'])
+def get_death():
+    print('get death')
+    content = request.get_json()
+    # content = {
+    #   detail_age: "23", 
+    #   race: "18", 
+    #   sex: "M", 
+    #   education_2003_revision: "1", 
+    #   marital_status: "S"
+    # }
+    try:
+        model = joblib.load('./data/model')
+        prediction = model.predict_proba(content)
+        
 
+
+
+
+        return response
+
+    except Exception as e:
+        print(e)
+        response = jsonify({'test': False})
+        return response
+
+
+
+    print(content)
+    return jsonify({'tested_it': True})
+
+#helpers
 def create_model(x_train, y_train):
     from sklearn import tree
     # from sklearn.ensemble import GradientBoostingClassifier

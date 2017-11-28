@@ -128,8 +128,23 @@ export default class App extends Component {
         deaths: deaths
       })
     // }, 1000)
+  }
 
+  submit = (data) => {
+    this.submitQuery({})
+    console.log("data")
+    console.log(data)
 
+    fetch('/api/get_death', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        },
+      body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
   }
 
   render() {
@@ -138,7 +153,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Form submitQuery={this.submitQuery} />
+        <Form submitQuery={this.submitQuery} submit={this.submit} />
         {this.state.deaths ? <Blocks deaths={this.state.deaths} /> : null}
         <Footer />
       </div>
@@ -214,15 +229,28 @@ class Blocks extends Component {
 class Form extends Component {
   constructor() {
     super()
+    this.state = {
+      detail_age: "23", 
+      race: "18", 
+      sex: "M", 
+      education_2003_revision: "1", 
+      marital_status: "S"
+    }
+
+  }
+
+  onChange = (event) => {
+    this.state = {...this.state, [event.target.name]: event.target.value}
+    // console.log(this.state)
   }
 
   render() {
     return (
       <div className="form">
         <p>I am a &nbsp;
-        <input type="number" defaultValue={23}></input>
+        <input name="detail_age" onChange={this.onChange} type="number" defaultValue={23}></input>
         &nbsp; year old &nbsp;
-        <select className="minimal">
+        <select name="race" onChange={this.onChange} className="minimal">
           <option value="18">Asian Indian</option>
           <option value="28">Korean</option>
           <option value="38">Samoan</option>
@@ -239,12 +267,12 @@ class Form extends Component {
           <option value="00">Other</option>
         </select>
         &nbsp;
-        <select className="minimal">
+        <select name="sex" onChange={this.onChange} className="minimal">
           <option value="M">Man</option>
           <option value="W">Woman</option>
         </select>
         &nbsp; with &nbsp;
-        <select className="minimal">
+        <select name="education_2003_revision" onChange={this.onChange} className="minimal">
           <option value="1">8th grade or less</option>
           <option value="2">9 - 12th grade, no diploma</option>
           <option value="3">high school graduate or GED completed</option>
@@ -256,7 +284,7 @@ class Form extends Component {
           <option value="9">Unknown</option>
         </select>
         &nbsp; level of education, and I am &nbsp;
-        <select className="minimal">
+        <select name="marital_status" onChange={this.onChange} className="minimal">
           <option value="S">Single</option>
           <option value="M">Married</option>
           <option value="W">Widowed</option>
@@ -265,7 +293,7 @@ class Form extends Component {
         </select>
         .
         </p>
-        <input className="button" type="button" value="Kill Me" onClick={() => this.props.submitQuery("fakedata")}></input>
+        <input className="button" type="button" value="Kill Me" onClick={() => this.props.submit(this.state)}></input>
       </div>
     )
   }

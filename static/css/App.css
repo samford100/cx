@@ -24,7 +24,7 @@ i {
 	/*background:red;
 	border-radius:5px;*/
 	padding:10px;
-  transition: text-shadow 2s ease-in;
+  transition: text-shadow .5s ease-in;
 }
 
 
@@ -204,7 +204,7 @@ option {
     text-align:center;
     font-size:3em;
     line-height:2em;
-    box-shadow: 0px 0px 50px 5px black;
+    /*box-shadow: 0px 0px 50px 5px black;*/
 }
 
 
