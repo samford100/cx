@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
 import '../css/App.css';
+import ath from '../images/atherosclerosis.png'
+import pregnant from '../images/pregnant.png'
+import livercirrhosis from '../images/livercirrhosis.png'
+import {Pneumonia, Suicide, Diabetes} from './svgs/Icons.js'
+// import Suicide from './svgs/Suicide.js'
 
 export default class App extends Component {
   constructor() {
@@ -135,16 +140,17 @@ export default class App extends Component {
     console.log("data")
     console.log(data)
 
-    fetch('/api/get_death', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        },
-      body: JSON.stringify(data)
-    })
-    .then(res => res.json())
-    .then(data => console.log(data))
+    // fetch('/api/get_death', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json',
+    //     },
+    //   body: JSON.stringify(data)
+    // })
+    // .then(res => res.json())
+    // .then(data => console.log(data))
+
   }
 
   render() {
@@ -187,10 +193,11 @@ class Block extends Component {
           <span style={{display: "inline-block", height: ".5em"}}>{this.props.death.age}</span><br />
           <span style={{fontSize: "12px"}}>years old</span>
         </div>
+
         <div className="icons">
-          <i className={this.state.selected == 0 ? "fa fa-heartbeat fa-5x i-selected" : "fa fa-heartbeat fa-5x icon"} onMouseEnter={() => this.onHover(0)}></i>
-          <i className={this.state.selected == 1 ? "fa fa-car fa-5x i-selected" : "fa fa-car fa-5x icon"} onMouseEnter={() => this.onHover(1)}></i>
-          <i className={this.state.selected == 2 ? "fa fa-medkit fa-5x i-selected" : "fa fa-medkit fa-5x icon"} onMouseEnter={() => this.onHover(2)}></i>
+          <span className={this.state.selected == 0 ? "icon-selected" : "icon"} onMouseEnter={() => this.onHover(0)}><Pneumonia /></span>
+          <span className={this.state.selected == 1 ? "icon-selected" : "icon"} onMouseEnter={() => this.onHover(1)}><Suicide /></span>
+          <span className={this.state.selected == 2 ? "icon-selected" : "icon"} onMouseEnter={() => this.onHover(2)}><Diabetes /></span>
         </div>
 
         {mappedWays[this.state.selected]}
