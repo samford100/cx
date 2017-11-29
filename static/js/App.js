@@ -44,14 +44,14 @@ export default class App extends Component {
             {
               name: "Heart Attack",
               chance: .50,
-              desc: ` Heart disease describes a range of conditions that affect your heart. 
-                      Diseases under the heart disease umbrella include blood vessel diseases, 
-                      such as coronary artery disease; heart rhythm problems (arrhythmias); and 
+              desc: ` Heart disease describes a range of conditions that affect your heart.
+                      Diseases under the heart disease umbrella include blood vessel diseases,
+                      such as coronary artery disease; heart rhythm problems (arrhythmias); and
                       heart defects you're born with (congenital heart defects), among others.
-                      The term "heart disease" is often used interchangeably with the term "cardiovascular disease." 
-                      Cardiovascular disease generally refers to conditions that involve narrowed or blocked blood 
-                      vessels that can lead to a heart attack, chest pain (angina) or stroke. Other heart conditions, 
-                      such as those that affect your heart's muscle, valves or rhythm, also are considered forms of 
+                      The term "heart disease" is often used interchangeably with the term "cardiovascular disease."
+                      Cardiovascular disease generally refers to conditions that involve narrowed or blocked blood
+                      vessels that can lead to a heart attack, chest pain (angina) or stroke. Other heart conditions,
+                      such as those that affect your heart's muscle, valves or rhythm, also are considered forms of
                       heart disease.`
 
             },
@@ -73,14 +73,14 @@ export default class App extends Component {
             {
               name: "Fart Attack",
               chance: .50,
-              desc: ` Heart disease describes a range of conditions that affect your heart. 
-                      Diseases under the heart disease umbrella include blood vessel diseases, 
-                      such as coronary artery disease; heart rhythm problems (arrhythmias); and 
+              desc: ` Heart disease describes a range of conditions that affect your heart.
+                      Diseases under the heart disease umbrella include blood vessel diseases,
+                      such as coronary artery disease; heart rhythm problems (arrhythmias); and
                       heart defects you're born with (congenital heart defects), among others.
-                      The term "heart disease" is often used interchangeably with the term "cardiovascular disease." 
-                      Cardiovascular disease generally refers to conditions that involve narrowed or blocked blood 
-                      vessels that can lead to a heart attack, chest pain (angina) or stroke. Other heart conditions, 
-                      such as those that affect your heart's muscle, valves or rhythm, also are considered forms of 
+                      The term "heart disease" is often used interchangeably with the term "cardiovascular disease."
+                      Cardiovascular disease generally refers to conditions that involve narrowed or blocked blood
+                      vessels that can lead to a heart attack, chest pain (angina) or stroke. Other heart conditions,
+                      such as those that affect your heart's muscle, valves or rhythm, also are considered forms of
                       heart disease.`
 
             },
@@ -102,14 +102,14 @@ export default class App extends Component {
             {
               name: "Heart Attack",
               chance: .50,
-              desc: ` Heart disease describes a range of conditions that affect your heart. 
-                      Diseases under the heart disease umbrella include blood vessel diseases, 
-                      such as coronary artery disease; heart rhythm problems (arrhythmias); and 
+              desc: ` Heart disease describes a range of conditions that affect your heart.
+                      Diseases under the heart disease umbrella include blood vessel diseases,
+                      such as coronary artery disease; heart rhythm problems (arrhythmias); and
                       heart defects you're born with (congenital heart defects), among others.
-                      The term "heart disease" is often used interchangeably with the term "cardiovascular disease." 
-                      Cardiovascular disease generally refers to conditions that involve narrowed or blocked blood 
-                      vessels that can lead to a heart attack, chest pain (angina) or stroke. Other heart conditions, 
-                      such as those that affect your heart's muscle, valves or rhythm, also are considered forms of 
+                      The term "heart disease" is often used interchangeably with the term "cardiovascular disease."
+                      Cardiovascular disease generally refers to conditions that involve narrowed or blocked blood
+                      vessels that can lead to a heart attack, chest pain (angina) or stroke. Other heart conditions,
+                      such as those that affect your heart's muscle, valves or rhythm, also are considered forms of
                       heart disease.`
 
             },
@@ -140,16 +140,16 @@ export default class App extends Component {
     console.log("data")
     console.log(data)
 
-    // fetch('/api/get_death', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json',
-    //     },
-    //   body: JSON.stringify(data)
-    // })
-    // .then(res => res.json())
-    // .then(data => console.log(data))
+    fetch('/api/get_death', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        },
+      body: JSON.stringify(data)
+    })
+    .then(res => return res.json())
+    .then(data => console.log(data))
 
   }
 
@@ -207,7 +207,7 @@ class Block extends Component {
   }
 }
 
-const BlockInfo = ({name, chance, desc}) => 
+const BlockInfo = ({name, chance, desc}) =>
   <div>
     <h2>{name}<span> - {chance * 100}%</span></h2>
     <p className="blockDesc">{desc}</p>
@@ -237,10 +237,10 @@ class Form extends Component {
   constructor() {
     super()
     this.state = {
-      detail_age: "23", 
-      race: "18", 
-      sex: "M", 
-      education_2003_revision: "1", 
+      detail_age: "23",
+      race: "18",
+      sex: "M",
+      education_2003_revision: "1",
       marital_status: "S"
     }
 
@@ -313,7 +313,7 @@ const Loading = () => {
 }
 
 
-const Header = () => 
+const Header = () =>
   <div className="header">
     <div className='heart-rate'>
       <svg version='1' xmlns='http://www.w3.org/2000/svg' xmlnsXlink='http://www.w3.org/1999/xlink'
@@ -329,23 +329,9 @@ const Header = () =>
   </div>
 
 
-const Footer = () => 
+const Footer = () =>
   <div className="footer">
     <p><span>Created for CX6242 at Georgia Tech by Sam Ford, John Giordano, Joe Mosby, Aaron Parry, and Rodolfo Saborio</span></p>
     <p><span><a href="https://www.github.com/samford100/cx">View the source on github</a></span></p>
-    
+
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

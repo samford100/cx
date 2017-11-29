@@ -98,13 +98,6 @@ def get_death():
         prediction = model.predict_proba(df)
         print(prediction)
 
-
-
-
-    try:
-        model = joblib.load('./data/model')
-        prediction = model.predict_proba(content)
-
         return response
 
     except Exception as e:
@@ -168,9 +161,6 @@ def read_and_clean_data():
     # MAP MARITAL STATUS AND INJURY AT WORK TO INTEGERS
     title_mapping = {"M": 1, "W": 2, "S": 3, "D": 4}
     data['marital_status'] = data['marital_status'].map(title_mapping)
-
-    title_mapping = {"U": 1, "N": 0}
-    data['injury_at_work'] = data['injury_at_work'].map(title_mapping)
 
 
     # FILL ALL BLANK CELLS
