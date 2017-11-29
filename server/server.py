@@ -97,8 +97,12 @@ def get_death():
         model = joblib.load('./data/model')
         prediction = model.predict_proba(df)
         print(prediction)
-
-        return response
+        response = {}
+        for ind,row in enumerate(df['detail_age']):
+            print(row)
+            response[str(row)] = [float(x) for x in prediction[ind]]
+        # print(jsonify(res = response))
+        return jsonify(res = response)
 
     except Exception as e:
         print(e)
