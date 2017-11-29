@@ -27,15 +27,46 @@ i {
   transition: text-shadow .5s ease-in;
 }
 
+.icon svg path {
+  fill: white;
+}
+
+.icon-selected svg path {
+  fill:#af111c;
+}
+
+img {
+  height: 100px;
+  width:100px;
+  background:#333333;
+}
+
+img:hover {
+  color: #af111c;
+}
+
+svg {
+  height: 100px;
+  width: 100px;
+}
+
+/*path {
+  fill:white;
+}
+
+path:hover {
+  fill:#af111c;
+}*/
+
+
+
+
 
 .icons {
   /*text-align:center;*/
+
 }
 
-icon:hover {
-  /*font-size:90px;*/
-  text-shadow: 2px 2px black;
-}
 
 a {
   color: white;

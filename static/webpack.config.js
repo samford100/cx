@@ -21,15 +21,24 @@ const config = {
 	      { 
 	        test: /\.css$/, 
 	        loader: "style-loader!css-loader" 
-	      }, 
+	      },
+	      {
+	      	test: /\.(png|jpg|gif)$/,
+	      	loader: 'file-loader',
+	      	options: {
+	      		publicPath: "/dist",
+	      		outputPath: "/"
+	      	}
+	      }
 	    ]
+
 	  },
 	output: {
 		path: __dirname + '/dist',
 		filename: 'bundle.js'
 	},
 	resolve: {
-		extensions: ['.js', '.css']
+		extensions: ['.js', '.css', '.png']
 	}
 }
 

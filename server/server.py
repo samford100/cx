@@ -72,7 +72,8 @@ def test_death():
 def get_death():
     print('get death')
     content = request.get_json()
-    print(content)
+
+
     # content = {
     #   detail_age: "23",
     #   race: "18",
@@ -100,6 +101,9 @@ def get_death():
 
 
 
+    try:
+        model = joblib.load('./data/model')
+        prediction = model.predict_proba(content)
 
         return response
 
@@ -138,50 +142,47 @@ def split_data(data, test_size=.1):
 def read_and_clean_data():
     data = pd.read_csv('./data/intermediate_clean_2015_deaths.csv')
 
-    print('read data from csv') # this is quick
+    print('read data from csv')  # this is quick
+
+    bad_columns = ['resident_status',  'education_reporting_flag',
+                    'month_of_death',  'detail_age_type',
+                    'place_of_death_and_decedents_status',
+                    'day_of_week_of_death', 'current_data_year',
+                    'injury_at_work', 'manner_of_death', 'activity_code',
+                    'place_of_injury_for_causes_w00_y34_except_y06_and_y07_']
+
+    #response_column = '39_cause_recode'
+
+    predictor_columns = ['detail_age', 'race', 'sex', 'education_2003_revision', 'marital_status']
+
+    data = data.drop(bad_columns,axis=1)
 
 
-    #CONSOLIDATE RACE COLUMN
-    data['race'] = data['race'].replace(8,68)
-    data['race'] = data['race'].replace(78,68)
+    # CONSOLIDATE RACE COLUMN
+    data['race'] = data['race'].replace(8, 68)
+    data['race'] = data['race'].replace(78, 68)
 
-    #SET GENDER TO BINARY
-    data['sex'] = data['sex'].map({'F':0, 'M': 1}).astype(int)
+    # SET GENDER TO BINARY
+    data['sex'] = data['sex'].map({'F': 0, 'M': 1}).astype(int)
 
-    #MAP MARITAL STATUS AND INJURY AT WORK TO INTEGERS
+    # MAP MARITAL STATUS AND INJURY AT WORK TO INTEGERS
     title_mapping = {"M": 1, "W": 2, "S": 3, "D": 4}
     data['marital_status'] = data['marital_status'].map(title_mapping)
 
     title_mapping = {"U": 1, "N": 0}
     data['injury_at_work'] = data['injury_at_work'].map(title_mapping)
 
-    column_names = ['resident_status', 'education_2003_revision', 'education_reporting_flag',
-                'month_of_death', 'sex', 'detail_age_type', 'detail_age',
-                'place_of_death_and_decedents_status', 'marital_status',
-                'day_of_week_of_death', 'current_data_year',
-                'injury_at_work', 'manner_of_death', 'activity_code',
-                'place_of_injury_for_causes_w00_y34_except_y06_and_y07_',
-                '39_cause_recode', 'race']
 
-    #FILL ALL BLANK CELLS
-    for each in column_names:
+    # FILL ALL BLANK CELLS
+    for each in predictor_columns:
         data[each] = data[each].fillna(0)
 
-    one_hot = ['resident_status', 'education_2003_revision', 'education_reporting_flag',
-                     'sex', 'detail_age_type',
-                    'place_of_death_and_decedents_status', 'marital_status',
-                    'day_of_week_of_death',
-                    'injury_at_work', 'manner_of_death', 'activity_code',
-                    'place_of_injury_for_causes_w00_y34_except_y06_and_y07_', 'race']
+    one_hot = [ 'education_2003_revision', 'sex', 'marital_status','race']
 
-
-
-    #ONE HOT ENCODING
+    # ONE HOT ENCODING
     data = pd.get_dummies(data, columns=one_hot)
-    print('one hot encoded') # this is quick
+    print('one hot encoded')  # this is quick
     return data
-
-
 
 
 if __name__ == "__main__":
