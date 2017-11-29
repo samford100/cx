@@ -148,7 +148,7 @@ export default class App extends Component {
         },
       body: JSON.stringify(data)
     })
-    .then(res => return res.json())
+    .then(res => res.json())
     .then(data => console.log(data))
 
   }

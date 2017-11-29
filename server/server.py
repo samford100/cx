@@ -88,7 +88,7 @@ def get_death():
 
     content['detail_age'] = [content['detail_age'][0], 50, 75]
     df = pd.DataFrame(data=content)
-    df['sex'] = df['sex'].map({'F':0, 'M': 1}).astype(int)
+    df['sex'] = df['sex'].map({'W':0, 'M': 1}).astype(int)
     title_mapping = {"M": 1, "W": 2, "S": 3, "D": 4}
     df['marital_status'] = df['marital_status'].map(title_mapping)
 
@@ -167,11 +167,12 @@ def read_and_clean_data():
     for each in predictor_columns:
         data[each] = data[each].fillna(0)
 
-    one_hot = [ 'education_2003_revision', 'sex', 'marital_status','race']
+    # one_hot = [ 'education_2003_revision', 'sex', 'marital_status','race']
 
     # ONE HOT ENCODING
-    data = pd.get_dummies(data, columns=one_hot)
-    print('one hot encoded')  # this is quick
+    # data = pd.get_dummies(data, columns=one_hot)
+    # print('one hot encoded')  # this is quick
+    print(data[:5])
     return data
 
 
