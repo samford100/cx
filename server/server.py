@@ -14,6 +14,7 @@ app = Flask(__name__, static_folder="../static/dist", template_folder="../static
 
 @app.route("/")
 def index():
+    train_death()
     return render_template("index.html")
 
 # api routes
@@ -79,10 +80,17 @@ def get_death():
     #   education_2003_revision: "1",
     #   marital_status: "S"
     # }
+
     for key, value in content.items():
         content[key] = [value, value, value]
+
+
     content['detail_age'] = [content['detail_age'][0], 50, 75]
     df = pd.DataFrame(data=content)
+    df['sex'] = df['sex'].map({'F':0, 'M': 1}).astype(int)
+    title_mapping = {"M": 1, "W": 2, "S": 3, "D": 4}
+    df['marital_status'] = df['marital_status'].map(title_mapping)
+
     print(df)
     try:
         model = joblib.load('./data/model')
