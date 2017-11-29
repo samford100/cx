@@ -27,12 +27,29 @@ i {
   transition: text-shadow .5s ease-in;
 }
 
+.icons span {
+  padding:10px;
+}
+
 .icon svg path {
   fill: white;
 }
 
+.icon svg polygon {
+  fill: white;
+}
+
+.icon-selected svg polygon {
+  fill:#af111c;
+}
+
 .icon-selected svg path {
   fill:#af111c;
+}
+
+.icon-selected svg {
+  height: 125px;
+  width: 125px;
 }
 
 img {
