@@ -1,6 +1,6 @@
 # cx
 To run:
-1. Clone repository
+1. Clone repository or unzip submitted 'code' folder
 2. Navigate to 'static' folder
 3. run `npm install`
 4. run `yarn install`
