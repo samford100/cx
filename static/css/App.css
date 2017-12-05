@@ -12,7 +12,7 @@
 body {
 	padding-left: 20%;
 	padding-right: 20%;
-	padding-top:10%;
+	padding-top:2%;
 	/*padding-bottom:10%;*/
 	background: #333333;
 	color:white;
@@ -25,6 +25,46 @@ i {
 	border-radius:5px;*/
 	padding:10px;
   transition: text-shadow .5s ease-in;
+}
+
+
+.details {
+  animation-name: bounceIn;
+  animation-duration: .7s;
+  animation-timing-function: linear;
+  animation-fill-mode: forward;
+}
+
+
+@keyframes bounceIn {
+  0%{
+    opacity: 1;
+    transform: translate(0px, 200px);
+  }
+  65%{
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+  80%{
+    opacity: 1;
+    transform: translate(0px, 10px);
+  }
+  100%{
+    opacity: 1;
+    transform: translate(0px, 0px);
+  }
+}
+
+
+
+
+ul {
+  animation: fadein 1s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 .icons span {
@@ -75,15 +115,10 @@ path:hover {
   fill:#af111c;
 }*/
 
-
-
-
-
 .icons {
   /*text-align:center;*/
 
 }
-
 
 a {
   color: white;
@@ -275,8 +310,9 @@ p {
   text-align:center;
   font-size:10px;
 	/*position:fixed;*/
-	bottom:10;
+	bottom:5;
 }
+
 
 .heart-rate {
   width: 150px;

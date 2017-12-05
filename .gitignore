@@ -1,5 +1,8 @@
 static/node_modules/
 
-server/data/
+server/data/model
+server/data/x_test
+server/data/y_test
+server/data/intermediate_clean_2015_deaths.csv
 
 static/dist/

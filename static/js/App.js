@@ -45,6 +45,13 @@ export default class App extends Component {
     this.setState({
       deaths: null
     })
+
+    this.state = {}
+
+
+    console.log('sending this data')
+    console.log(data)
+
     fetch('/api/get_death', {
       method: 'POST',
       headers: {
@@ -55,7 +62,7 @@ export default class App extends Component {
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data.res)
+      // console.log(data.res)
       this.setState({
         deaths: data.res
       })
@@ -64,8 +71,6 @@ export default class App extends Component {
   }
 
   render() {
-    // load from source
-
     return (
       <div className="App">
         <Header />
@@ -94,16 +99,8 @@ class Block extends Component {
   }
 
   render() {
-
-    console.log('death')
-    console.log(this.props.death)
-
     const age = this.props.death[0]
     const ways = this.props.death[1]
-    // const way1 = ways[0]
-
-    console.log('age:' + age)
-    // console.log('ways:' + ways[0])
 
     const cause_map = {
         "1":
@@ -346,11 +343,6 @@ class Block extends Component {
 
 
     const mappedInfo = ways.map(way => {
-      console.log('way::')
-      console.log(way[0])
-      console.log(cause_map[way[0]].name)
-      console.log(way[1])
-      console.log(cause_map[way[0]].description)
       return <BlockInfo code={way[0]} name={cause_map[way[0]].name} chance={way[1]} desc={cause_map[way[0]].description} />
     })
 
@@ -363,12 +355,19 @@ class Block extends Component {
           // <span className={this.state.selected == 1 ? "icon-selected" : "icon"} onMouseEnter={() => this.onHover(1)}><Accident /></span>
           // <span className={this.state.selected == 2 ? "icon-selected" : "icon"} onMouseEnter={() => this.onHover(2)}><HeartAttack /></span>
 
-    console.log('icons')
-    console.log(ways[0][0])
-    console.log(cause_map[ways[0][0]])
     const icon0 = cause_map[ways[0][0]].icon;
     const icon1 = cause_map[ways[1][0]].icon;
     const icon2 = cause_map[ways[2][0]].icon;
+
+            //     <span className={this.state.selected == 0 ? "icon-selected" : "icon"} onMouseEnter={() => this.onHover(0)}>{icon0}</span>
+            // <span className={this.state.selected == 1 ? "icon-selected" : "icon"} onMouseEnter={() => this.onHover(1)}>{icon1}</span>
+            // <span className={this.state.selected == 2 ? "icon-selected" : "icon"} onMouseEnter={() => this.onHover(2)}>{icon2}</span>
+
+
+    const mappedIcons = ways.map((way, i) => {
+      const icon = cause_map[way[0]].icon;
+      return <span className={this.state.selected == i ? "icon-selected" : "icon"} onMouseEnter={() => this.onHover(i)}>{icon}</span>
+    })
 
     return (
       <li className="block">
@@ -377,15 +376,13 @@ class Block extends Component {
           <span style={{fontSize: "12px"}}>years old</span>
         </div>
 
-        <div className="icons">
-            <span className={this.state.selected == 0 ? "icon-selected" : "icon"} onMouseEnter={() => this.onHover(0)}>{icon0}</span>
-            <span className={this.state.selected == 1 ? "icon-selected" : "icon"} onMouseEnter={() => this.onHover(1)}>{icon1}</span>
-            <span className={this.state.selected == 2 ? "icon-selected" : "icon"} onMouseEnter={() => this.onHover(2)}>{icon2}</span>
+        <div className="details">
+          <div className="icons">
+            {mappedIcons}
+          </div>
 
+          {mappedInfo[this.state.selected]}
         </div>
-
-        {mappedInfo[this.state.selected]}
-
       </li>
     )
   }
@@ -401,8 +398,6 @@ const BlockInfo = ({name, chance, desc}) =>
 class Blocks extends Component {
   render() {
 
-    console.log('deaths from blocks')
-    console.log(Object.entries(this.props.deaths))
     const mappedBlocks = Object.entries(this.props.deaths).map(death => <Block death={death} />)
     return (
       <ul>
@@ -428,11 +423,16 @@ class Form extends Component {
       education_2003_revision: "1",
       marital_status: "S"
     }
-
   }
 
   onChange = (event) => {
     this.state = {...this.state, [event.target.name]: event.target.value}
+    // this.setState({
+    //   [event.target.name]: event.target.value
+    // })
+
+    console.log('state')
+    console.log(state)
   }
 
   render() {
